@@ -17,4 +17,6 @@ for num in idlist:
     raw_email_string = raw_email.decode('utf-8')
     email_message = email.message_from_string(raw_email_string)
     print('From: '+email_message['from'])
-    print('body: '+email_message['to'])
+    print('body: '+str(email_message.get_payload()[0]))
+    atta = email.message_from_file(open('Data.xlsx'))
+    attachment = atta.get_payload()[1]
