@@ -11,4 +11,5 @@ outputdir = "C:/Users/luisr/Desktop/Documentos importantes/IntegrationErrors/Doc
 
 connection = [server,user,password,outputdir]
 DownloadAttachments.FetchEmail(connection)
-analyzeDocuments.Analyze()
+Document = analyzeDocuments.Organize()
+Document.analyze()
