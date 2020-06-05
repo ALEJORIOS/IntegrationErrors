@@ -4,6 +4,7 @@ class Organize:
     
     def __init__(self):
         self.catched = []
+        self.users = []
         self.OrderHeader = []
         self.DocumentID = []
         self.Requester = []
@@ -29,13 +30,18 @@ class Organize:
             self.errorsCounter+=1
         for error in range(self.errorsCounter):
             self.catched.append([])
+            self.users.append([])
         print(errors.readline())
         for order in range(self.orders):
             for res in range(len(self.Response[order])):
                 for error in range(self.errorsCounter):
                     if self.lines[error] in self.Response[order][res]:
-                        self.catched[error].append(self.OrderHeader[order])
+                        self.catched[error].append(self.Response[order][res])
+                        self.users[error].append(self.OrderHeader[order])
         errors.close()
+        print(self.users)
+        print(self.catched)
+
     
     def callCreators(self):
         print("helloWorld!")
