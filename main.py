@@ -1,22 +1,14 @@
-from email.parser import BytesParser, Parser
-from smtplib import *
-from email.mime.text import MIMEText
-import poplib
-import argparse
+import imaplib
 import email
+import DownloadAttachments
+import analyzeDocuments
+import pandas
 
-m = poplib.POP3_SSL('pop.gmail.com',995)
-m.user('luisrios.lar@gmail.com')
-m.pass_('939030e99')
-numero = len(m.list()[1])
-la = []
-print("Número total de mensajes: "+str(numero))
-for i in range (10):
-    print ("Mensaje numero "+str(i+1))
-    print ("--------------------")
-    response, headerLines, bytes = m.retr(i+1)
-mensaje=''.join(str(headerLines))
-#p = Parser()
-#email = p.parsestr(mensaje)
-#email = p.parsestr(mensaje)
-print(mensaje[0])
+server = "imap.gmail.com"
+user = "luisrios.lar@gmail.com"
+password = "939030e99"
+outputdir = "C:/Users/luisr/Desktop/Documentos importantes/IntegrationErrors/Documents"
+
+connection = [server,user,password,outputdir]
+DownloadAttachments.FetchEmail(connection)
+analyzeDocuments.Analyze()
