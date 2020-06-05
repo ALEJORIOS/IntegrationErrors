@@ -21,10 +21,20 @@ class Organize:
             self.Response.append(self.document['Response Messages'][order].split('\n'))
     
     def analyze(self):
+        errors = open('C:/Users/luisr/Desktop/Documentos importantes/IntegrationErrors/Errors.txt','r')
+        self.lines = []
+        self.errorsCounter = 0
+        for line in errors:
+            self.lines.append(line.replace('\n',''))
+            self.errorsCounter+=1
+        for error in range(self.errorsCounter):
+            self.catched.append([])
+        print(errors.readline())
         for order in range(self.orders):
-            for error in range(len(self.Response[order])):
-                #if str(self.Response[order][error]).find("t") != -1:
-                if "Enter a tax code" in self.Response[order][error]:
-                    self.catched.append(self.OrderHeader[order])
-            
-        print(self.catched)
+            for res in range(len(self.Response[order])):
+                for error in range(self.errorsCounter):
+                    if self.lines[error] in self.Response[order][res]:
+                        self.catched[error].append(self.OrderHeader[order])
+        errors.close()
+        
+        
