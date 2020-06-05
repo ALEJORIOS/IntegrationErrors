@@ -13,3 +13,4 @@ connection = [server,user,password,outputdir]
 DownloadAttachments.FetchEmail(connection)
 Document = analyzeDocuments.Organize()
 Document.analyze()
+Document.callCreators()

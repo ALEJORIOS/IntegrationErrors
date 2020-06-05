@@ -37,12 +37,24 @@ class Organize:
                 for error in range(self.errorsCounter):
                     if self.lines[error] in self.Response[order][res]:
                         self.catched[error].append(self.Response[order][res])
-                        self.users[error].append(self.OrderHeader[order])
+                        self.users[error].append('E'+self.OrderHeader[order].zfill(9))
         errors.close()
         print(self.users)
-        print(self.catched)
 
-    
     def callCreators(self):
-        print("helloWorld!")
+        self.creators = []
+        document = pd.read_excel('C:/Users/luisr/Desktop/Documentos importantes/IntegrationErrors/Documents/requisition.xlsx')
+        print(document['PO Number'][0])
+        for error in range(self.errorsCounter):
+            self.creators.append([])
+        for error in range(self.errorsCounter):
+            for iterator in range(len(self.users[error])):
+                order = self.users[error][iterator]
+                add = document['Created By'][self.users[error].index(order)]
+                self.creators[error].append(add)
+            
+        print(self.creators)
+
+    def getMail(self):
+        print("Hello wowrld!")
         
