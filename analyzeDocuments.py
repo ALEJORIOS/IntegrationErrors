@@ -39,12 +39,11 @@ class Organize:
                         self.catched[error].append(self.Response[order][res])
                         self.users[error].append('E'+self.OrderHeader[order].zfill(9))
         errors.close()
-        print(self.users)
+        
 
     def callCreators(self):
         self.creators = []
         document = pd.read_excel('C:/Users/luisr/Desktop/Documentos importantes/IntegrationErrors/Documents/requisition.xlsx')
-        print(document['PO Number'][0])
         for error in range(self.errorsCounter):
             self.creators.append([])
         for error in range(self.errorsCounter):
@@ -52,9 +51,23 @@ class Organize:
                 order = self.users[error][iterator]
                 add = document['Created By'][self.users[error].index(order)]
                 self.creators[error].append(add)
-            
-        print(self.creators)
 
     def getMail(self):
-        print("Hello wowrld!")
+        self.mails = []
+        self.tMails = []
+        document = pd.read_excel('C:/Users/luisr/Desktop/Documentos importantes/IntegrationErrors/Documents/users.xlsx')
+        
+        for error in range(self.errorsCounter):
+            self.mails.append([])
+        for error in range(self.errorsCounter):
+            for iterator in range(len(self.users[error])):
+                creator = self.creators[error][iterator]
+                add = document['Email*'][self.creators[error].index(creator)]
+                self.mails[error].append(add)
+
+        for error in range(self.errorsCounter):
+            self.tMails.append(",".join(self.mails[error]))
+        self.tMails = set((",".join(self.tMails)).split(','))
+        
+        
         
