@@ -6,7 +6,7 @@ class Organize:
         self.catched = []
         self.users = []
         self.OrderHeader = []
-        self.DocumentID = []
+        #self.DocumentID = []
         self.Requester = []
         self.Date = []
         self.Response = []
@@ -16,7 +16,7 @@ class Organize:
         
         for order in range(self.orders):
             self.OrderHeader.append((self.document['Document'][order].split())[-1])
-            self.DocumentID.append(self.document['Document ID'][order])
+            #self.DocumentID.append(self.document['Document ID'][order])
             self.Requester.append(self.document['Requester'][order])
             self.Date.append(self.document['PO Created Date'][order])
             self.Response.append(self.document['Response Messages'][order].split('\n'))
