@@ -2,6 +2,7 @@ import imaplib
 import email
 import DownloadAttachments
 import analyzeDocuments
+import sendMails
 import pandas
 
 server = "imap.gmail.com"
@@ -12,6 +13,7 @@ outputdir = "C:/Users/luisr/Desktop/Documentos importantes/IntegrationErrors/Doc
 connection = [server,user,password,outputdir]
 DownloadAttachments.FetchEmail(connection)
 Document = analyzeDocuments.Organize()
-Document.analyze()
+orders, errors = Document.analyze()
 Document.callCreators()
-Document.getMail()
+destin = Document.getMail()
+sendMails.prepare([user,password,destin], orders, errors)

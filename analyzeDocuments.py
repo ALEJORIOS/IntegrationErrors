@@ -36,9 +36,10 @@ class Organize:
             for res in range(len(self.Response[order])):
                 for error in range(self.errorsCounter):
                     if self.lines[error] in self.Response[order][res]:
-                        self.catched[error].append(self.Response[order][res])
+                        self.catched[error].append(self.Response[order][res].replace(':',';').split(';')[-1])
                         self.users[error].append('E'+self.OrderHeader[order].zfill(9))
         errors.close()
+        return self.users, self.catched
         
 
     def callCreators(self):
@@ -64,10 +65,8 @@ class Organize:
                 creator = self.creators[error][iterator]
                 add = document['Email*'][self.creators[error].index(creator)]
                 self.mails[error].append(add)
+        
 
         for error in range(self.errorsCounter):
-            self.tMails.append(",".join(self.mails[error]))
-        self.tMails = set((",".join(self.tMails)).split(','))
-        
-        
-        
+            self.mails[error] = list(set(self.mails[error]))
+        return self.mails
