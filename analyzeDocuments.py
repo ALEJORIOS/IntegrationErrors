@@ -1,4 +1,5 @@
 import pandas as pd
+from collections import OrderedDict
 
 class Organize:
     
@@ -38,6 +39,7 @@ class Organize:
                     if self.lines[error] in self.Response[order][res]:
                         self.catched[error].append(self.Response[order][res].replace(':',';').split(';')[-1])
                         self.users[error].append('E'+self.OrderHeader[order].zfill(9))
+
         errors.close()
         return self.users, self.catched
         

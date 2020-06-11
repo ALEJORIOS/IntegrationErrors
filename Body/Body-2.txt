@@ -1,9 +1,6 @@
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-laboris nisi ut aliquip ex ea commodo consequat. 
+Buen día a todos, espero se encuentren bien.
 
-Duis aute irure dolor in reprehenderit in voluptate velit 
-esse cillum dolore eu fugiat nulla pariatur. 
-Excepteur sint occaecat cupidatat non proident, 
-sunt in culpa qui officia deserunt mollit anim id est laborum.
+Les escribo debido a que las ordenes de compra que se encuentrar abajo relacionadas generaron errores de integración porque el indicador de impuesto no es válido para el esquema seleccionado.
+Agradezco me puedan confirmar una vez se haya corregido el error para tener el seguimiento.
+
+Por último, les recomiendo nuevamente que se revisen los historiales de integración siempre que se emitan las ordenes de compra, esto para demoras en el procesamiento de ingreso, factura y pago.
