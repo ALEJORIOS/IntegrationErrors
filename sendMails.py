@@ -62,11 +62,12 @@ class prepare:
             self.toSender = "Estos son los errores de integración que se enviaran a los usuarios: \n"+"\n".join(autentication[2][mail]) + "\n\nCon el siguiente mensaje:\n\n"+ self.message + "\n\nDe no haber respuesta a este correo, el mensaje será enviado automáticamente a las " +str(self.now.hour)+":"+str(self.now.minute+10)  
             self.msg.attach(MIMEText(self.toSender, 'plain'))
             self.server.sendmail(self.msg['From'],self.sender,str(self.msg))
+            print("Mensajes enviados correctamente al remitente")
         del self.msg
-        send_time = datetime.datetime(self.now.year,self.now.month,self.now.day,self.now.hour,self.now.minute+1,0)
+        send_time = datetime.datetime(self.now.year,self.now.month,self.now.day,self.now.hour,self.now.minute+10,0)
         time.sleep(send_time.timestamp() - time.time())
 
-        """for mail in range(len(errors)):
+        for mail in range(len(errors)):
             self.msg = MIMEMultipart()
             self.msg['From'] = autentication[0]
             self.message = self.text[mail]
@@ -76,6 +77,6 @@ class prepare:
             self.msg.attach(MIMEText(self.message, 'plain'))
             self.msg['To'] = ", ".join(autentication[2][mail])
             self.msg['Subject'] = "Error de integración en orden de compra"
-            prepare.send(self, autentication[2][mail])"""
+            prepare.send(self, autentication[2][mail])
 
             
